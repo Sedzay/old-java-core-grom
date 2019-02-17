@@ -30,6 +30,28 @@ public class Demo {
         System.out.println(furnitureOrder2.getDateShipped());
         System.out.println(electronicsOrder.getTotalPrice());*/
 
+        //-------------------------------------------------------------------
+        //Если Customer null
+        ElectronicsOrder electronicsOrder = new ElectronicsOrder("first",new Date(),"Киев", "Днепр",1200,null,3);
+
+        electronicsOrder.validateOrder();
+        electronicsOrder.calculatePrice();
+        electronicsOrder.confirmShipping();
+
+        //если цена отрицательная
+        ElectronicsOrder electronicsOrder2 = new ElectronicsOrder("second",new Date(),"Киев", "Днепр",-1200,new Customer("Anna","Днепр","Женский"),3);
+
+        electronicsOrder2.validateOrder();
+        electronicsOrder2.calculatePrice();
+        electronicsOrder2.confirmShipping();
+
+        //если гарантийный срок отрицательный
+        ElectronicsOrder electronicsOrder3 = new ElectronicsOrder("third",new Date(),"Киев", "Днепр",1200,new Customer("Anna","Днепр","Женский"),-3);
+
+        electronicsOrder3.validateOrder();
+        electronicsOrder3.calculatePrice();
+        electronicsOrder3.confirmShipping();
+
 
 
     }

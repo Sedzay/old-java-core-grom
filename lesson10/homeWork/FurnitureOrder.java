@@ -20,6 +20,7 @@ public class FurnitureOrder extends Order {
         if (((getShipFromCity() == "Киев")
                 || (getShipFromCity() == "Львов"))
                 && (getBasePrice() >= 500)
+                && getCustomerOwned()!=null
                 && (getCustomerOwned().getName() != "Тест")) {
             setDateConfirmed(new Date());
         }

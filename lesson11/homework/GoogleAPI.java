@@ -14,6 +14,8 @@ public class GoogleAPI implements API {
 
         //посчитать размер массива нужных комнат
         int countRooms = 0;
+        if(rooms == null)
+            return null;
         for (Room room : rooms) {
             if (room != null
                     && price == room.getPrice()

@@ -11,7 +11,8 @@ public class BookingComAPI implements API {
     @Override
     public Room[] findRooms(int price, int persons, String city, String hotel) {
         Room[] newArrayRooms = null;
-
+        if (rooms == null)
+            return null;
         //посчитать размер массива нужных комнат
         int countRooms = 0;
         for (Room room : rooms) {

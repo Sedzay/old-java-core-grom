@@ -12,7 +12,7 @@ public class Controller {
         int countRooms = 0;
 
         for (API api : apis) {
-            if (api != null) {
+            if (api != null && api.findRooms(price,persons,city,hotel)!=null) {
                 //for (Room room : api.getAll()) {
                     countRooms += api.findRooms(price,persons,city,hotel).length;
                     /*if (findRoomByParameters(room,price,persons,city,hotel))
@@ -24,7 +24,7 @@ public class Controller {
         Room[] rooms = new Room[countRooms];
         int i = 0;
         for (API api : apis) {
-            if (api != null) {
+            if (api != null && api.findRooms(price,persons,city,hotel)!=null) {
                 Room[] apiRooms = api.findRooms(price,persons,city,hotel);
                 for (Room room : /*api.getAll()*/ apiRooms) {
                     //if (findRoomByParameters(room,price,persons,city,hotel)){

@@ -1,5 +1,6 @@
 package lesson11.homework;
 
+import java.util.Arrays;
 import java.util.Date;
 
 public class Demo {
@@ -13,28 +14,34 @@ public class Demo {
 
         Room[] rooms = new Room[]{room1,room2,room3,room4,room5,room6};
 
-        //BookingComAPI bookingComAPI = new BookingComAPI(rooms);
-        /*for (Room room : bookingComAPI.findRooms(100,4,"Kiev", "Hilton")) {
+        BookingComAPI bookingComAPI = new BookingComAPI(rooms);
+        for (Room room : bookingComAPI.findRooms(100,4,"Kiev", "Hilton")) {
             System.out.println(room.getId());
-        }*/
-
-        Controller controller = new Controller(new API[]{new BookingComAPI(rooms)/*null*/, new TripAdvisorAPI(rooms)/*,new GoogleAPI(rooms)*/});
-        Room[] roomNeed = new Room[18];
-                roomNeed = controller.requestRooms(100, 4,"Kiev","Hilton");
-        for (Room room : roomNeed) {
-            if (room!=null)
-                System.out.println(room.getId());
-            else
-                System.out.println("null");
         }
 
-       /* Room[]checkRooms = controller.check(new TripAdvisorAPI(rooms),new GoogleAPI(rooms));
+        //если Room null
+        Controller controller = new Controller(new API[]{new BookingComAPI(rooms), new TripAdvisorAPI(rooms),new GoogleAPI(rooms)});
+        Room[] roomNeed = new Room[18];
+        roomNeed = controller.requestRooms(100, 4,"Kiev","Hilton");
+
+        Room cheaperRoom = controller.cheapestRoom();
+        System.out.println(cheaperRoom.getId());
+
+        //если API null
+        /*Controller controller = new Controller(new API[]{null, new TripAdvisorAPI(rooms),new GoogleAPI(rooms)});
+        Room[] roomNeed = new Room[18];
+        roomNeed = controller.requestRooms(100, 4,"Kiev","Hilton");*/
+        /* Room[]checkRooms = controller.check(new TripAdvisorAPI(rooms),new GoogleAPI(rooms));
         for (Room room : checkRooms) {
             System.out.println(room.getId());
         }*/
 
-        /*Room cheaperRoom = controller.cheapestRoom();
-        System.out.println(cheaperRoom.getId());*/
+        //если нет списка комнат
+        Room[] rooms1 = null;
+        Controller controller1 = new Controller(new API[]{new GoogleAPI(rooms1)});
+        Room[] rooms2 = controller1.requestRooms(100,4,"Hilton", "Kiev");
+        System.out.println(Arrays.toString(rooms2));
+
     }
 
 }

@@ -19,6 +19,7 @@ public class ElectronicsOrder extends Order {
                 if (getShipFromCity() == cityFrom
                         && getShipToCity() == cityTo
                         && getBasePrice() >= 100
+                        && getCustomerOwned()!=null
                         && getCustomerOwned().getGender() == "Женский") {
                     setDateConfirmed(new Date());
                     break;
