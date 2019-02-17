@@ -1,7 +1,6 @@
 package lesson6;
 
 public class Car {
-    //test commit
     //1 fields
     int price;
     int yearOfManufacturing;
